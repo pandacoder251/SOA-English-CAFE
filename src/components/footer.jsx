@@ -33,8 +33,7 @@ function Footer() {
 
     return (
         <footer className="footer">
-
-           
+            
 
             {/* Newsletter */}
             <div className="footer-center" >
