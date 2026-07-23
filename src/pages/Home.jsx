@@ -34,7 +34,7 @@ function Home() {
 
           <div className="glass-content left">
             <h1>
-              SOA <span>EnglishCafe</span>
+              SOA <span>EnglishCafé</span>
             </h1>
 
             <p>
