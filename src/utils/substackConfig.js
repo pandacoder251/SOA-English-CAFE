@@ -16,7 +16,7 @@
 
 // Replace 'yourname' with your actual Substack subdomain.
 // Example: if your substack is 'https://thechaoticcafe.substack.com', enter 'thechaoticcafe'
-export const SUBSTACK_USERNAME = "englishcafe";
+export const SUBSTACK_USERNAME = "soaenglishcafe";
 
 // You generally do not need to edit anything below this line.
 export const getSubstackEmbedUrl = () => {

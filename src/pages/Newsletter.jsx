@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Newsletter.css";
-import SubstackEmbed from "../components/SubstackEmbed";
 
 const API_BASE = "http://localhost:8000";
 
@@ -120,7 +119,6 @@ function Newsletter() {
                 <p>A curated chronicle of words, voices, and moments.</p>
             </div>
 
-            <SubstackEmbed />
 
             {newsletters.length > 1 && (
                 <div className="newsletter-selector">
