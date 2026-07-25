@@ -120,40 +120,72 @@ function Newsletter() {
             </div>
 
 
-            {newsletters.length > 1 && (
-                <div className="newsletter-selector">
-                    <button
-                        className="newsletter-menu-toggle"
-                        onClick={toggleMenu}
-                        disabled={loading}
-                    >
-                        Select Newsletter
-                        <span className={`arrow ${menuOpen ? 'open' : ''}`}>▼</span>
-                    </button>
+     {newsletters.length > 0 && (
+    <div className="newsletter-carousel">
 
-                    {menuOpen && (
-                        <div className="newsletter-menu">
-                            {newsletters.map((newsletter) => (
-                                <div
-                                    key={newsletter.id}
-                                    className={`newsletter-menu-item ${newsletter.id === selectedNewsletterId ? 'active' : ''
-                                        }`}
-                                    onClick={() => handleNewsletterChange(newsletter.id)}
-                                >
-                                    <div className="newsletter-menu-title">{newsletter.title}</div>
-                                    <div className="newsletter-menu-date">
-                                        {new Date(newsletter.uploaded_at).toLocaleDateString('en-US', {
-                                            year: 'numeric',
-                                            month: 'long',
-                                            day: 'numeric'
-                                        })}
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    )}
+        <button
+            className="carousel-btn left"
+            onClick={() =>
+                document
+                    .getElementById("newsletter-scroll")
+                    .scrollBy({ left: -320, behavior: "smooth" })
+            }
+        >
+            &#10094;
+        </button>
+
+        <div
+            className="newsletter-scroll"
+            id="newsletter-scroll"
+        >
+            {newsletters.map((newsletter) => (
+                <div
+                    key={newsletter.id}
+                    className={`newsletter-card ${
+                        newsletter.id === selectedNewsletterId
+                            ? "active"
+                            : ""
+                    }`}
+                    onClick={() =>
+                        handleNewsletterChange(newsletter.id)
+                    }
+                >
+                    <div className="card-content">
+                        <h3>{newsletter.title}</h3>
+
+                        <p>
+                            {new Date(
+                                newsletter.uploaded_at
+                            ).toLocaleDateString("en-US", {
+                                month: "long",
+                                day: "numeric",
+                                year: "numeric",
+                            })}
+                        </p>
+
+                        <span>
+                            {newsletter.id === selectedNewsletterId
+                                ? "Currently Reading"
+                                : "Open Newsletter"}
+                        </span>
+                    </div>
                 </div>
-            )}
+            ))}
+        </div>
+
+        <button
+            className="carousel-btn right"
+            onClick={() =>
+                document
+                    .getElementById("newsletter-scroll")
+                    .scrollBy({ left: 320, behavior: "smooth" })
+            }
+        >
+            &#10095;
+        </button>
+
+    </div>
+)}
 
             <div className="book-container">
                 <div className={`book ${isOpen ? "open" : "closed"}`}>

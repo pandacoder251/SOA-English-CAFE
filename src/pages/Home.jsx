@@ -23,7 +23,17 @@ function Home() {
         );
       });
   }, []);
+  const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
+  const [message, setMessage] = useState("");
 
+  const handleEmail = () => {
+    const body = `Name: ${name}\n\nMessage:\n${message}`;
+
+    window.location.href = `mailto:englishcafeiter@gmail.com?subject=${encodeURIComponent(
+      subject
+    )}&body=${encodeURIComponent(body)}`;
+  };
   return (
     <main className="home">
 
@@ -139,21 +149,43 @@ function Home() {
         </div>
       </section>
 
-      {/* PANEL 4 — SUBMIT WRITING */}
-      <section className="panel">
-        <div className="glass-panel no-bg">
-          <div className="glass-content center">
-            <h2>Submit Your Writing</h2>
-            <p>Poetry, essays, stories — let your voice be heard.</p>
+      {/* PANEL 4 — Contact Us */}
+      <section className="panel-contact">
+        <div className="glass-panel-contact">
+          <div className="glass-content-contact">
+            <h2>Contact Us</h2>
 
-            <a
-              href="https://forms.google.com"
-              target="_blank"
-              rel="noreferrer"
-              className="btn primary"
-            >
-              Submit Now
-            </a>
+            <p>
+              Have questions, feedback, or would like to contribute? We'd love to hear
+              from you.
+            </p>
+
+            <div className="contact-form">
+              <input
+                type="text"
+                placeholder="Your Name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+
+              <input
+                type="text"
+                placeholder="Subject"
+                value={subject}
+                onChange={(e) => setSubject(e.target.value)}
+              />
+
+              <textarea
+                rows="6"
+                placeholder="Write your message..."
+                value={message}
+                onChange={(e) => setMessage(e.target.value)}
+              />
+
+              <button className="btn primary" onClick={handleEmail}>
+                Send Email
+              </button>
+            </div>
           </div>
         </div>
       </section>
